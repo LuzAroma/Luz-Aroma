@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva tu Kit Día de la Madre – Luz y Aromas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+   body {
+      font-family: 'Lato', sans-serif;
+      background-color: #fff8f4;
+      color: #3d3d3d;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .navbar {
+      background-color: #fff2ec;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #3d3d3d;
+    }
+    .nav-links a {
+      color: #3d3d3d;
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #d6a77a;
+    }
+    .menu-toggle {
+      display: none;
+    }
+    /* Header Section */
+    .header-section {
+      background: linear-gradient(to bottom, #fff2ec, #fff8f4);
+      text-align: center;
+      padding: 40px 20px;
+      margin-bottom: 40px;
+    }
+    .header-section h1 {
+    font-size: 3rem;
+      color: #3d3d3d;
+      margin-bottom: 10px;
+    }
+    .header-section p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Reservation Section */
+    .reservation-section {
+      padding: 0 20px 60px;
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .product-summary {
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .product-summary h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #3d3d3d;
+    }
+    .product-image img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    .price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #d6a77a;
+      margin-bottom: 15px;
+    }
+    .product-summary p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    .product-summary ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+    .product-summary ul li {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .product-summary ul li::before {
+      content: '✓';
+      color: #d6a77a;
+      font-weight: bold;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #d6a77a;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+    .back-link:hover {
+      color: #c4925e;
+    }
+
+    /* Form Container */
+    .form-container {
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .form-container h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #3d3d3d;
+    }
+    .form-container p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    .form-container input[type="text"],
+    .form-container input[type="email"],
+    .form-container input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    .form-container input:focus {
+      border-color: #d6a77a;
+      outline: none;
+    }
+    .form-container label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+    .form-container button {
+      background-color: #d6a77a;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s, transform 0.2s;
+      margin-top: 15px;
+    }
+    .form-container button:hover {
+      background-color: #c4925e;
+      transform: translateY(-2px);
+    }
+    .order-summary {
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff2ec;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .order-summary p {
+      margin: 5px 0;
+    }
+    .order-summary .total {
+      font-weight: 700;
+      color: #d6a77a;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    .modal-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #3d3d3d;
+    }
+    .modal-content p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .modal-content button {
+      background-color: #d6a77a;
+      color: white;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .modal-content button:hover {
+      background-color: #c4925e;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #fff2ec;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9rem;
+    }
+    footer p {
+      margin: 5px 0;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #fff2ec;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .nav-links li {
+        margin: 10px 0;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .reservation-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .header-section h1 {
+        font-size: 2.5rem;
+      }
+      .product-summary h2 {
+        font-size: 2rem;
+      }
+      .form-container h2 {
+        font-size: 1.8rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .header-section h1 {
+        font-size: 2rem;
+      }
+      .header-section p {
+        font-size: 1rem;
+      }
+      .product-summary h2 {
+        font-size: 1.8rem;
+      }
+      .form-container h2 {
+        font-size: 1.6rem;
+      }
+      .form-container p {
+        font-size: 0.95rem;
+      }
+      .form-container button {
+        padding: 12px;
+        font-size: 1rem;
+      }
+      .price {
+        font-size: 1.5rem;
+      }
+      .product-image img {
+        max-width: 200px;
+      }
+      .navbar {
+        padding: 10px 15px;
+      }
+      .logo {
+        font-size: 1.5rem;
+      }
+      .modal-content {
+        max-width: 90%;
+      }
+
+    }
+    .stars span {
+        font-size: 1.2rem;
+        color: #d6a77a;
+        }
+  </style>
+</head>
+<body>
+    <nav class="navbar bg-[#fff2ec] sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <a href="index.html" class="text-2xl font-playfair text-[#3d3d3d]">Luz & Aroma</a>
+          
+          <!-- Botón hamburguesa -->
+          <button id="menu-btn" class="sm:hidden text-[#3d3d3d] focus:outline-none" aria-label="Abrir menú">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+      
+       <!-- Enlaces -->
+       <ul id="menu" class="hidden sm:flex space-x-6 font-bold text-[#3d3d3d]">
+        <li><a href="../index.html" class="hover:text-[#d6a77a] transition">Inicio</a></li>
+        <li><a href="producto.html" class="hover:text-[#d6a77a] transition">Comprar</a></li>
+        <li><a href="faq.html" class="hover:text-[#d6a77a] transition">FAQ</a></li>
+      </ul>
+    </div>
+  
+    <!-- Menú móvil -->
+    <ul id="mobile-menu" class="sm:hidden hidden flex-col px-4 pb-4 space-y-2 font-bold text-[#3d3d3d] bg-[#fff2ec]">
+      <li><a href="../index.html" class="block hover:text-[#d6a77a] transition">Inicio</a></li>
+      <li><a href="producto.html" class="block hover:text-[#d6a77a] transition">Comprar</a></li>
+      <li><a href="faq.html" class="block hover:text-[#d6a77a] transition">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <section class="header-section">
+    <h1>Reserva tu Kit Día de la Madre</h1>
+    <p>Asegura tu regalo exclusivo con un 10% de descuento antes de que se agoten.</p>
+  </section>
+
+  <section class="reservation-section">
+    <div class="product-summary">
+      <h2>Kit Artesanal Día de la Madre</h2>
+      <div class="product-image">
+        <img src="../img/producto2.jpg" alt="Kit Artesanal Día de la Madre">
+      </div>
+      <div class="price">39,90 € <span style="font-size: 1rem; color: #3d3d3d;">(con descuento: 35,91 €)</span></div>
+      <p>El Kit Artesanal Edición Limitada es el regalo perfecto para sorprender a mamá, con una vela artesanal de fragancia exclusiva y un empaque premium.</p>
+      <ul>
+        <li>Vela artesanal de 230g con fragancia de jazmín y ámbar</li>
+        <li>Duración aproximada: 50 horas</li>
+        <li>Packaging de regalo premium incluido</li>
+        <li>Envío rápido en 24-48h</li>
+      </ul>
+      <a href="../index.html" class="back-link">Volver al inicio</a>
+    </div>
+    <div class="form-container">
+      <h2>Confirmar tu Reserva</h2>
+      <p>Completa tus datos para reservar tu kit con un 10% de descuento exclusivo.</p>
+      <form id="reserve-form" action="https://formsubmit.co/planmtkdigital25@gmail.com" method="POST">
+        <input type="text" name="name" placeholder="Tu nombre" required aria-label="Nombre">
+        <input type="email" name="email" placeholder="Tu email" required aria-label="Email">
+        <input type="number" name="quantity" placeholder="Cantidad" min="1" value="1" required aria-label="Cantidad">
+        <label>
+          <input type="checkbox" name="offers" aria-label="Acepto recibir ofertas">
+          Acepto recibir ofertas y promociones
+        </label>
+        <input type="hidden" name="_subject" value="¡Nueva reserva del Kit Día de la Madre - Luz y Aromas!">
+        <input type="hidden" name="_autoresponse" id="autoresponse" value="">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_after" value="">
+        <div class="order-summary">
+          <p>Cantidad: <span id="quantity-display">1</span></p>
+          <p>Precio por unidad: 39,90 €</p>
+          <p>Descuento (10%): -3,99 €</p>
+          <p class="total">Total: <span id="total-display">35,91 €</span></p>
+        </div>
+        <button type="submit">Confirmar Reserva</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="success-modal" class="modal">
+    <div class="modal-content">
+      <h3>¡Gracias por tu compra!</h3>
+      <p>Pronto recibirás los detalles de tu reserva. ¡Revisa tu bandeja de entrada!</p>
+      <button onclick="closeModal()">Cerrar</button>
+    </div>
+  </div>
+  <section class="reviews-section py-16 px-4 bg-[#fff8f4]">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-playfair text-[#3d3d3d] mb-8">Lo que dicen nuestros clientes</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Opinión 1 -->
+        <div class="review-card p-6 bg-white rounded-xl shadow-md">
+          <div class="stars mb-3 flex justify-center gap-1 text-[#d6a77a]">
+            <!-- 5 estrellas -->
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="text-sm italic mb-4">"Un detalle precioso y muy especial. A mi madre le encantó el aroma."</p>
+          <h4 class="font-bold text-[#d6a77a]">Juan M.</h4>
+        </div>
+  
+        <!-- Opinión 2 -->
+        <div class="review-card p-6 bg-white rounded-xl shadow-md">
+          <div class="stars mb-3 flex justify-center gap-1 text-[#d6a77a]">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="text-sm italic mb-4">"La presentación es impecable. Ideal para regalar sin preocuparse por el envoltorio."</p>
+          <h4 class="font-bold text-[#d6a77a]">Carmen R.</h4>
+        </div>
+  
+        <!-- Opinión 3 -->
+        <div class="review-card p-6 bg-white rounded-xl shadow-md">
+          <div class="stars mb-3 flex justify-center gap-1 text-[#d6a77a]">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="text-sm italic mb-4">"Un aroma elegante y duradero. Repetiré seguro para próximos eventos."</p>
+          <h4 class="font-bold text-[#d6a77a]">Isabel G.</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <h2 class="text-2xl font-playfair mb-2">Luz & Aroma</h2>
+    <p>Artesanía y tradición hecha con amor en Valencia, España.</p>
+    <p>© 2025 Luz & Aroma. Todos los derechos reservados.</p>
+  </footer>
+  <script>
+    // Form validation, total calculation, and email handling
+    const form = document.getElementById('reserve-form');
+    const quantityInput = form.querySelector('input[name="quantity"]');
+    const quantityDisplay = document.getElementById('quantity-display');
+    const totalDisplay = document.getElementById('total-display');
+    const autoresponseInput = document.getElementById('autoresponse');
+
+    quantityInput.addEventListener('input', () => {
+      let quantity = parseInt(quantityInput.value) || 1;
+      if (quantity < 1) quantity = 1;
+      quantityInput.value = quantity;
+      quantityDisplay.textContent = quantity;
+      const price = 39.90;
+      const discount = price * 0.1;
+      const total = (price - discount) * quantity;
+      totalDisplay.textContent = total.toFixed(2) + ' €';
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault(); // Evitar el comportamiento predeterminado
+      const name = form.querySelector('input[name="name"]').value.trim();
+      const email = form.querySelector('input[name="email"]').value.trim();
+      const quantity = parseInt(form.querySelector('input[name="quantity"]').value) || 1;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!name || !emailRegex.test(email)) {
+        alert('Por favor, completa todos los campos correctamente.');
+        return;
+      }
+
+      // Calcular el total
+      const price = 39.90;
+      const discount = price * 0.1;
+      const total = (price - discount) * quantity;
+
+      // Configurar el mensaje de autorespuesta dinámicamente
+      const autoresponseMessage = `¡Gracias por tu reserva, ${name}! Has reservado ${quantity} Kit(s) Artesanal Día de la Madre por un total de ${total.toFixed(2)} €. Te contactaremos pronto para coordinar el envío.`;
+      autoresponseInput.value = autoresponseMessage;
+
+      // Enviar el formulario usando fetch
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          // Mostrar el modal
+          document.getElementById('success-modal').style.display = 'flex';
+        } else {
+          alert('Hubo un error al enviar el formulario. Intenta de nuevo.');
+        }
+      })
+      .catch(() => {
+        alert('No se pudo conectar con el servidor.');
+      });
+    });
+
+    function closeModal() {
+      document.getElementById('success-modal').style.display = 'none';
+    }
+
+    // Menú responsive
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

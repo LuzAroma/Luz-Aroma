@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:description" content="Un regalo artesanal único para el Día de la Madre con fragancia de jazmín blanco y ámbar suave.">
+  <meta property="og:image" content="img/kayla-warner-tRk9WKkEf7Q-unsplash 2.jpg">
+  <meta property="og:url" content="https://yourwebsite.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Luz y Aromas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: #fff8f4;
+      color: #3d3d3d;
+      margin: 0;
+    }
+    .navbar {
+      background-color: #fff2ec;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #3d3d3d;
+    }
+    .nav-links a {
+      color: #3d3d3d;
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #d6a77a;
+    }
+    .menu-toggle {
+      display: none;
+    }
+    .product-hero {
+      background-image: url('img/pexels-artempodrez-6801221.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 8rem 1rem;
+      text-align: center;
+      position: relative;
+      color: white;
+    }
+    .product-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .product-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 1rem;
+    }
+    .cta-button {
+      background-color: #e0b39a;
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 9999px;
+      transition: background-color 0.3s;
+    }
+    .cta-button:hover {
+      background-color: #d19a82;
+    }
+    .product-details {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .form-section {
+      background: #fff;
+      padding: 3rem 1rem;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    .form-container input {
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      width: 100%;
+      transition: border-color 0.3s;
+    }
+    .form-container input:focus {
+      border-color: #d6a77a;
+      outline: none;
+    }
+    .form-container button {
+      background-color: #d6a77a;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .form-container button:hover {
+      background-color: #c4925e;
+    }
+    footer {
+      background-color: #fff2ec;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 4rem;
+        left: 0;
+        width: 100%;
+        background: #fff2ec;
+        padding: 1rem;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .product-details {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar bg-[#fff2ec] sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+      <a href="index.html" class="text-2xl font-playfair text-[#3d3d3d]">Luz & Aroma</a>
+      <!-- Botón hamburguesa -->
+      <button id="menu-btn" class="sm:hidden text-[#3d3d3d] focus:outline-none" aria-label="Abrir menú">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <!-- Enlaces -->
+      <ul id="menu" class="hidden sm:flex space-x-6 font-bold text-[#3d3d3d]">
+        <li><a href="" class="hover:text-[#d6a77a] transition">Inicio</a></li>
+        <li><a href="html/producto.html" class="hover:text-[#d6a77a] transition">Comprar</a></li>
+        <li><a href="html/faq.html" class="hover:text-[#d6a77a] transition">FAQ</a></li>
+      </ul>
+    </div>
+  
+    <!-- Menú móvil -->
+    <ul id="mobile-menu" class="sm:hidden hidden flex-col px-4 pb-4 space-y-2 font-bold text-[#3d3d3d] bg-[#fff2ec]">
+      <li><a href="index.html" class="block hover:text-[#d6a77a] transition">Inicio</a></li>
+      <li><a href="html/producto.html" class="block hover:text-[#d6a77a] transition">Comprar</a></li>
+      <li><a href="html/faq.html" class="block hover:text-[#d6a77a] transition">FAQ</a></li>
+    </ul>
+  </nav>
+  
+
+  <section class="product-hero">
+    <div class="product-hero-content" data-aos="fade-up">
+      <h1 class="text-4xl md:text-5xl font-playfair">Un regalo para una mujer única</h1>
+      <p class="text-lg md:text-xl my-6">Edición limitada hecha a mano en Valencia · Fragancia exclusiva de jazmín blanco y ámbar suave</p>
+      <a href="html/producto.html" class="cta-button">Consigue un 10% de descuento</a>
+    </div>
+  </section>
+
+  <section class="features-highlight bg-[#fffaf7] py-16">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center px-4" data-aos="fade-right">
+      <img src="img/candles.jpg" alt="Kit Artesanal Día de la Madre"
+      class="w-full h-[50vh] object-cover rounded-lg shadow-lg" loading="lazy">
+ 
+      <div>
+        <h2 class="text-3xl font-playfair mb-6">Un aroma que envuelve</h2>
+        <p class="text-lg mb-6">Descubre la fragancia exclusiva de jazmín blanco y ámbar suave. Su aroma cálido y elegante transforma cualquier espacio en un rincón de bienestar.</p>
+        <ul class="list-none p-0">
+          <li class="mb-2">🌸 Jazmín Blanco: puro y floral</li>
+          <li class="mb-2">🌿 Ámbar Suave: reconfortante y cálido</li>
+          <li class="mb-2">🕯️ Hecha con cera vegetal premium</li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-5xl mx-auto mt-16">
+      <h2 class="text-center text-2xl font-playfair mb-8">¿Qué incluye el kit?</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <h3 class="text-lg font-bold mb-2">Vela artesanal (230g)</h3>
+          <p>Con mecha de algodón natural y fragancia exclusiva</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <h3 class="text-lg font-bold mb-2">Caja regalo edición limitada</h3>
+          <p>Diseño exclusivo para el Día de la Madre</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <h3 class="text-lg font-bold mb-2">Tarjeta personalizada</h3>
+          <p>Incluye tu mensaje especial para mamá</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <h3 class="text-lg font-bold mb-2">Bolsa de lino reutilizable</h3>
+          <p>Ideal para seguir cuidando del planeta</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="product-details">
+    <div class="product-image" data-aos="fade-left">
+      <img src="img/producto2.jpg" alt="Kit Artesanal Día de la Madre"
+           class="w-full max-h-[400px] object-cover rounded-lg shadow-lg" loading="lazy">
+    </div>  
+    <div class="product-info" data-aos="fade-right">
+      <h2 class="text-3xl font-playfair mb-6">El regalo perfecto para mamá</h2>
+      <p class="text-lg mb-6">El Kit Artesanal Edición Limitada para el Día de la Madre combina la elegancia de una vela artesanal con fragancias exclusivas y un packaging cuidadosamente diseñado para emocionar.</p>
+      <div class="text-2xl font-bold text-[#d6a77a] mb-6">39,90 € <span class="text-base text-[#3d3d3d]">(con descuento: 35,91 €)</span></div>
+      <ul class="list-none p-0 mb-6">
+        <li class="mb-2 flex items-center"><span class="mr-2 text-[#d6a77a]">✓</span> Vela artesanal de 230g con fragancia de jazmín y ámbar</li>
+        <li class="mb-2 flex items-center"><span class="mr-2 text-[#d6a77a]">✓</span> Duración aproximada: 50 horas</li>
+        <li class="mb-2 flex items-center"><span class="mr-2 text-[#d6a77a]">✓</span> Packaging de regalo premium incluido</li>
+        <li class="mb-2 flex items-center"><span class="mr-2 text-[#d6a77a]">✓</span> Envío rápido en 24-48h</li>
+      </ul>
+      <a href="html/producto.html" class="cta-button">Comprar ahora</a>
+    </div>
+  </section>
+
+<!-- Footer -->
+<footer>
+  <h2 class="text-2xl font-playfair mb-2">Luz & Aroma</h2>
+  <p>Artesanía y tradición hecha con amor en Valencia, España.</p>
+  <p>© 2025 Luz & Aroma. Todos los derechos reservados.</p>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    function toggleMenu() {
+      const navLinks = document.getElementById('nav-links');
+      const menuToggle = document.querySelector('.menu-toggle');
+      navLinks.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    }
+    document.getElementById('reserve-form').addEventListener('submit', function(e) {
+      const email = document.querySelector('input[name="email"]').value;
+      if (!email.includes('@')) {
+        e.preventDefault();
+        alert('Por favor, introduce un correo electrónico válido.');
+      }
+    });
+  </script>
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+  
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+  
+</body>
+</html>
